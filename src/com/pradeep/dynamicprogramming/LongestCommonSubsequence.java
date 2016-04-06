@@ -14,7 +14,7 @@ public class LongestCommonSubsequence {
 		}
 
 		StringBuilder sb = new StringBuilder();
-
+		// Need a fix - getting duplicates??
 		for (int i = 1; i < input1.length; i++) {
 			for (int j = 1; j < input2.length; j++) {
 				if (input1[i] == input2[j]) {

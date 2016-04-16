@@ -1,9 +1,11 @@
 package com.pradeep.datastructures;
 
+import com.pradeep.datastructures.LinkedList.Node;
+
 public class LinkedList<E> {
 
 	// Node class
-	private static class Node<E> {
+	public static class Node<E> {
 
 		private E element;
 		private Node<E> next;
@@ -96,5 +98,9 @@ public class LinkedList<E> {
 			tail = null;
 		return element;
 
+	}
+
+	public Node<E> head() {
+		return head;
 	}
 }

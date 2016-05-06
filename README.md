@@ -1,11 +1,8 @@
 # Interview Prep
 
 My implementations of Algorithms and DataStructures problems and solutions to popular coding questions asked in technical interview. 
-
 Also, a collection of useful resources helpful for preparation.
-
 ## Articles
-
 Recommended: Steve Yegge – **Get That Job at Google** [[web][a_sy]]
 
 * Carlos Bueno – **Get That Job at Facebook** [[web][a_cb]]

@@ -18,6 +18,7 @@ public class Queue {
 	}
 	
 	public int DeQueue(){
+		return front;
 		
 	}
 	

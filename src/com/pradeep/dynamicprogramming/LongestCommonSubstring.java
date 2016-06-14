@@ -19,7 +19,7 @@ public class LongestCommonSubstring {
 					T[i][j] = 0;
 				}
 			}
-			System.out.println(sb.toString());
+			//System.out.println(sb.toString());
 		}
 
 		return 0;

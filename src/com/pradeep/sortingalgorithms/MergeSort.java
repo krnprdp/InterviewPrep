@@ -6,70 +6,82 @@ public class MergeSort {
 
 	public static void main(String[] args) {
 
-		int[] unsorted = { 4, 1, 9, 6, 3};//, 0, 2, 5, 8, 7 };
-
-		int[] sorted = mergeSort(unsorted);
-
+		int[] unsorted = { 4, 1, 9, 6, 0, 2, 5 };
+		
 		System.out.println("Unsorted array: ");
 		for (int i = 0; i < unsorted.length; i++) {
 			System.out.print(unsorted[i] + "\t");
 		}
-
+		System.out.println();
+		
+		mergeSort(unsorted);
+		
 		System.out.println("\n\nSorted Array: ");
-		for (int i = 0; i < sorted.length; i++) {
-			System.out.print(sorted[i] + "\t");
+		for (int i = 0; i < unsorted.length; i++) {
+			System.out.print(unsorted[i] + "\t");
 		}
 
 	}
 
-	public static int[] mergeSort(int[] input) {
-		int[] op = new int[input.length];
-		mergeSort(input, op, 0, input.length - 1);
-		System.out.println(Arrays.toString(op));
-		return op;
-	}
+//	public static int[] mergeSort(int[] input) {
+//		int[] op = new int[input.length];
+//		mergeSort(input);
+//		return op;
+//	}
 
-	public static void mergeSort(int[] input, int[] temp, int low, int high) {
+	public static void mergeSort(int[] input) {
 
-		if (low < high) {
-			int mid = (low + high) / 2;
-//			System.out.println("low|high:" + low + " " + high);
-			mergeSort(input, temp, low, mid);
-			mergeSort(input, temp, mid + 1, high);
+		int size = input.length;
 
-			merge(input, temp, low, high);
+		if (size <= 1)
+			return;
+
+		int mid = size / 2;
+		int leftSize = mid;
+		int rightSize = size - mid;
+		
+		int[] left = new int[leftSize];
+		int[] right = new int[rightSize];
+ 
+		for (int i = 0; i < mid; i++) {
+			left[i] = input[i];
 		}
+		
+		for (int j = mid; j < size; j++) {
+			right[j - mid] = input[j];
+		}
+
+		mergeSort(left);
+		mergeSort(right);
+		System.out.println("L: " + Arrays.toString(left));
+		System.out.println("R: " + Arrays.toString(right));
+		System.out.println("before merge T: " + Arrays.toString(input));
+		merge(left, right, input);
+		System.out.println("after merge T: " + Arrays.toString(input));
+
 	}
 
-	public static void merge(int[] input, int[] temp, int low, int high) {
+	public static void merge(int[] left, int[] right, int[] input) {
 
-		int mid = (low + high) / 2;
-		int left = low;
-		int right = mid + 1;
+		int leftSize = left.length;
+		int rightSize = right.length;
 
-		int i = low;
-		while (left <= mid && right <= high) {
-			if (input[left] <= input[right]) {
-				temp[i] = input[left];
-				left++;
+		int leftPtr = 0, rightPtr = 0, tempPtr = 0;
+		
+		while (leftPtr < leftSize && rightPtr < rightSize) {
+			if (left[leftPtr] <= right[rightPtr]) {
+				input[tempPtr++] = left[leftPtr++];
 			} else {
-				temp[i] = input[right];
-				right++;
+				input[tempPtr++] = right[rightPtr++];
 			}
-			i++;
 		}
 
-		while (left <= mid) {
-			temp[i] = input[left];
-			i++;
-			left++;
+		while (leftPtr < leftSize) {
+			input[tempPtr++] = left[leftPtr++];
 		}
 
-		while (right <= high) {
-			temp[i] = input[right];
-			i++;
-			right++;
+		while (rightPtr < rightSize) {
+			input[tempPtr++] = right[rightPtr++];
 		}
-
 	}
 }

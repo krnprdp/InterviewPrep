@@ -1,7 +1,5 @@
 package com.pradeep.sortingalgorithms;
 
-import java.util.Arrays;
-
 public class MergeSort {
 
 	public static void main(String[] args) {
@@ -22,12 +20,6 @@ public class MergeSort {
 		}
 
 	}
-
-//	public static int[] mergeSort(int[] input) {
-//		int[] op = new int[input.length];
-//		mergeSort(input);
-//		return op;
-//	}
 
 	public static void mergeSort(int[] input) {
 
@@ -53,11 +45,8 @@ public class MergeSort {
 
 		mergeSort(left);
 		mergeSort(right);
-		System.out.println("L: " + Arrays.toString(left));
-		System.out.println("R: " + Arrays.toString(right));
-		System.out.println("before merge T: " + Arrays.toString(input));
 		merge(left, right, input);
-		System.out.println("after merge T: " + Arrays.toString(input));
+
 
 	}
 
